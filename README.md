@@ -1,4 +1,4 @@
-# MineMind — Mine Risk Mapper
+# MineMind - Mine Risk Mapper
 
 **MineMind** is a prototype AI-driven geospatial tool for visualizing predicted mine-related hazard risks across terrain and planning safer traversal routes that account for both predicted risk and model uncertainty. It integrates predictive modeling, explainability (SHAP), and active learning into an interactive Streamlit interface for analysts, NGOs, and researchers.
 

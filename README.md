@@ -26,6 +26,9 @@ Impact: MineMind provides a practical, human-in-the-loop environment for explori
 * Background job system: enqueue heavy tasks and inspect logs from `/jobs/`.
 
 ---
+![App Screenshot](demo.png)
+
+---
 
 ## Tech Stack
 
@@ -96,33 +99,6 @@ The app and backend scripts produce the following artifacts:
 
 ---
 
-## Integration: CI/CD (example)
-
-Below is an example GitHub Actions snippet to run a lightweight check (install dependencies and run a simple lint/test step). Adapt `python-version` and test commands to your environment.
-
-```yaml
-name: ci
-on: [push, pull_request]
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-      - name: Run lint
-        run: |
-          python -m pip install flake8
-          flake8 --max-line-length=120
-
-```
-
 ---
 
 ## Architecture & Design
@@ -135,19 +111,6 @@ High-level components:
 - SHAP helper (`backend/shap_explain.py`): computes SHAP values and writes artifacts used by the UI.
 - Active learning helper (`backend/active_learning.py`): selects top‑N uncertain nodes and supports incremental retraining using `data/labels_delta.csv`.
 - Job queue & worker (`backend/job_queue.py`, `backend/worker.py`): filesystem-backed queue for non-blocking compute jobs.
-
-Design trade-offs:
-
-- Simplicity and reproducibility: a filesystem-backed queue keeps the demo easy to run locally; swap-in Redis/Celery for production.
-- Predict-and-explain loop: SHAP is computed offline (background) to avoid blocking the UI — good for large datasets but requires worker resources.
-
----
-
-## Performance
-
-- Graph building uses KDTree for efficient neighbor queries; NetworkX handles shortest-path search. For medium-sized datasets (<100k points) this is performant locally; for larger datasets consider spatial partitioning or routing backends.
-- SHAP is the most expensive operation — use sampling (`--sample-size`) or run on a dedicated worker/machine.
-- Background jobs avoid blocking Streamlit but keep in mind disk I/O for job logs and artifacts; monitor storage when running many jobs.
 
 ---
 

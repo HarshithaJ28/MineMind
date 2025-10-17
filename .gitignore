@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+mrvenv/
+venv/
+ENV/
+
+# Data, models, jobs and reports (generated or sensitive)
+data/
+models/
+jobs/
+reports/
+
+# Jupyter
+.ipynb_checkpoints
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# pip
+pip-log.txt
+
+# Streamlit cache
+.streamlit/

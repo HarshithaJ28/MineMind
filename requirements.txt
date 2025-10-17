@@ -1,0 +1,11 @@
+streamlit 
+pandas 
+geopandas 
+shap 
+matplotlib 
+folium 
+pydeck 
+scikit-learn 
+torch 
+networkx 
+plotly

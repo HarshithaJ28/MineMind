@@ -6,6 +6,10 @@ Impact: MineMind provides a practical, human-in-the-loop environment for explori
 
 ---
 
+![App Screenshot](demo.png)
+
+---
+
 ## Highlights
 
 * Interactive map-driven workflow combining predicted risk and model uncertainty.
@@ -24,9 +28,6 @@ Impact: MineMind provides a practical, human-in-the-loop environment for explori
 * SHAP explainability: global mean |SHAP| summaries and per-node contributions for inspection.
 * Active learning pipeline: query top‑N uncertain samples, label them in the UI, and retrain.
 * Background job system: enqueue heavy tasks and inspect logs from `/jobs/`.
-
----
-![App Screenshot](demo.png)
 
 ---
 

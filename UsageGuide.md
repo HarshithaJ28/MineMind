@@ -1,4 +1,4 @@
-# MineRiskMapper — Frontend Usage Guide
+# MineMind - Frontend Usage Guide
 
 This file explains how to use the Streamlit frontend (interactive map, path planning, labeling, SHAP explainability, Active Learning and the lightweight RAG geospatial query helper). Keep this next to the project root so field users and reviewers can find instructions quickly.
 
@@ -120,7 +120,7 @@ Workflow suggestion
 
 ## Troubleshooting & tips
 
-- Map dark overlay: if you see a semi-transparent dark layer over the map, fully reload the Streamlit page (Ctrl+Shift+R) — or restart Streamlit — to pick up recent layout changes. The overlay can occur if raw HTML wrappers and Streamlit component rendering get stacked incorrectly. If the overlay persists I recommend switching to the `components.html` approach for the map (ask me to apply this change).
+- Map dark overlay: if you see a semi-transparent dark layer over the map, fully reload the Streamlit page (Ctrl+Shift+R) — or restart Streamlit — to pick up recent layout changes. The overlay can occur if raw HTML wrappers and Streamlit component rendering get stacked incorrectly. If the overlay persists I recommend switching to the `components.html` approach for the map .
 - Clicks not recognizing nodes: zoom in and ensure you click close to a green marker; the nearest-node snapping is computed on the metric-projected coordinates (EPSG:3857).
 - Path search fails: graph may be disconnected. Increase `Neighbors per node (k)` and try again.
 - SHAP jobs take long: run them via the background worker or use a smaller `--sample-size`.
@@ -133,12 +133,3 @@ Workflow suggestion
 - Background jobs: `backend/job_queue.py` and `backend/worker.py` manage filesystem-enqueued jobs and logs.
 - SHAP helper: `backend/shap_explain.py` — produces `models/shap_values.npy` and `models/shap_summary.json`.
 - Active learning: `backend/active_learning.py` — query and retrain utilities.
-
----
-
-If you'd like, I can:
-- Move the Save/Compare controls into the left Controls card (so users don't need to open the sidebar).
-- Add a "Clear start/end" button to reset selection.
-- Convert map rendering to `components.html` to remove overlay issues permanently.
-
-Tell me which of the above you'd like and I'll apply the change.
